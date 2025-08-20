@@ -1,0 +1,75 @@
+package librarydemo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+// Book class
+class Book {
+    String title;
+    String author;
+
+    Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+}
+
+// Member class
+class Member {
+    String name;
+    int memberId;
+
+    Member(String name, int memberId) {
+        this.name = name;
+        this.memberId = memberId;
+    }
+}
+
+// Library class
+class Library {
+    private List<Book> books = new ArrayList<>();
+    private List<Member> members = new ArrayList<>();
+
+    public void addBook(String title, String author) {
+        books.add(new Book(title, author));
+        System.out.println("Book added: " + title + " by " + author);
+    }
+
+    public void registerMember(String name, int memberId) {
+        members.add(new Member(name, memberId));
+        System.out.println("Member registered: " + name + " (ID: " + memberId + ")");
+    }
+
+    public void displayBooks() {
+        System.out.println("\nList of Books:");
+        for (Book b : books) {
+            System.out.println(b.title + " by " + b.author);
+        }
+    }
+
+    public void displayMembers() {
+        System.out.println("\nList of Members:");
+        for (Member m : members) {
+            System.out.println(m.name + " (ID: " + m.memberId + ")");
+        }
+    }
+}
+
+// ✅ Main Class
+public class LibraryDemo {
+    public static void main(String[] args) {
+        Library library = new Library();
+
+        // Adding books
+        library.addBook("Java Programming", "James Gosling");
+        library.addBook("Python Basics", "Guido van Rossum");
+
+        // Registering members
+        library.registerMember("Sreenidhi", 101);
+        library.registerMember("Vaishnavi", 102);
+
+        // Display all data
+        library.displayBooks();
+        library.displayMembers();
+    }
+}
